@@ -3,7 +3,7 @@
 - hosts: localhost
   connection: local
   gather_facts: false
-  user: root
+  user: ubuntu
 
   vars_files:
     - info/aws-credentials.yml

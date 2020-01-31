@@ -3,21 +3,21 @@
 - name: Configure EC2 instance
   hosts: ec2
   connection: ssh
-  become: true
-
-
+  become: yes
+  become_user: ubuntu
+  remote_user: ubuntu
   tasks:
   - name: Update the machine
     command: sudo apt-get clean && update -y
     
   - name: Installing essentials
-    command: apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+    command: sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
       
   - name: Installing Curl
-    command: apt-get install curl -y
+    command: sudo apt-get install curl -y
   
   - name: Installing docker
-    command: apt install docker.io -y
+    command: sudo apt install docker.io -y
 
   - name: Adding user to group
     command: sudo usermod -aG docker ${USER}
